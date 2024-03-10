@@ -24,7 +24,7 @@ class _SplashScreenState extends State<SplashScreen> {
   Widget build(BuildContext context) {
     return Container(
       decoration:BoxDecoration(
-        color: Theme.of(context).colorScheme.primary,
+        color: Color(0xFFDFECDB),
       ),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
