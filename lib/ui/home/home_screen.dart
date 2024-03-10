@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 
-import 'package:todo_app_flutter/ui/settings_tab/settings_tab.dart';
-import 'package:todo_app_flutter/ui/todo_list_tab/todo_tab.dart';
 
+import '../settings/settings_tab.dart';
 import '../sheets/add_task_sheet.dart';
+import '../todo_list/todo_tab.dart';
 
 class HomeScreen extends StatefulWidget {
   static const String routeName = 'Homescreen';
@@ -70,6 +70,6 @@ class _HomeScreenState extends State<HomeScreen> {
 
   List<Widget> tabs = [
     ToDoScreen(),
-    SettingScreen(),
+    SettingsScreen(),
   ];
 }
