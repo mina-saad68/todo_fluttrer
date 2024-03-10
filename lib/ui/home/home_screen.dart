@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
-
-
 import '../settings/settings_tab.dart';
 import '../sheets/add_task_sheet.dart';
 import '../todo_list/todo_tab.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class HomeScreen extends StatefulWidget {
   static const String routeName = 'Homescreen';
@@ -22,7 +21,7 @@ class _HomeScreenState extends State<HomeScreen> {
     return Scaffold(
       backgroundColor: Color(0xffDFECDB),
       appBar: AppBar(
-        title: index==0?Text('To Do List'):Text('Settings'),
+        title: index==0?Text(AppLocalizations.of(context)!.toDoList):Text(AppLocalizations.of(context)!.settings),
 
       ),
       bottomNavigationBar: BottomAppBar(
