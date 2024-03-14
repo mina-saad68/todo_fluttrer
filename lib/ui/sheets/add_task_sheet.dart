@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:todo_app_flutter/fire_base/firebase_function.dart';
+import 'package:todo_app_flutter/fire_base/model.dart';
+
+
 
 class AddTaskSheet extends StatefulWidget {
   static const String routeName = 'addtasksheet';
@@ -12,8 +16,9 @@ class AddTaskSheet extends StatefulWidget {
 
 class _AddTaskSheetState extends State<AddTaskSheet> {
   var formKey = GlobalKey<FormState>();
-
   var selectedDate= DateTime.now();
+  var descriptionController = TextEditingController();
+  var titleController = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -46,6 +51,7 @@ class _AddTaskSheetState extends State<AddTaskSheet> {
                   return null;
                 }
               },
+              controller: titleController,
               decoration: InputDecoration(
                 label: Text(
                   'enter your task',
@@ -64,6 +70,7 @@ class _AddTaskSheetState extends State<AddTaskSheet> {
                   return null;
                 }
               },
+              controller: descriptionController,
               decoration: InputDecoration(
                 label: Text(
                   'enter your description',
@@ -101,7 +108,15 @@ class _AddTaskSheetState extends State<AddTaskSheet> {
                 width: double.infinity,
                 child: ElevatedButton(
                   onPressed: () {
-                    if (formKey.currentState!.validate()) {}
+                    if (formKey.currentState!.validate()) {
+                      TaskModel task = TaskModel(
+                          title: titleController.text,
+                          description: descriptionController.text,
+                          date: DateUtils.dateOnly(selectedDate) .millisecondsSinceEpoch);
+                      FireBaseFunctions.addTask(task);
+                      Navigator.pop(context);
+
+                    }
                   },
                   child: Text(
                     'add task',

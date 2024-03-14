@@ -1,10 +1,22 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:todo_app_flutter/outhentication/login_tab.dart';
+import 'package:todo_app_flutter/outhentication/register_tab.dart';
 import 'package:todo_app_flutter/ui/home/home_screen.dart';
 import 'package:todo_app_flutter/ui/settings/settings_tab.dart';
 import 'package:todo_app_flutter/ui/splash/splash.dart';
+import 'package:todo_app_flutter/ui/todo_list/edit_task.dart';
 import 'package:todo_app_flutter/ui/todo_list/todo_tab.dart';
 
-void main (){
+import 'firebase_options.dart';
+
+void main () async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
+  await FirebaseFirestore.instance.disableNetwork();
   runApp(MyApp());
 }
 
@@ -42,6 +54,9 @@ class MyApp extends StatelessWidget{
         HomeScreen.routeName : (context) => HomeScreen(),
         ToDoScreen.routeName : (context) => ToDoScreen(),
         SettingsScreen.routeName : (context) => SettingsScreen(),
+        EditTask.routeName : (context) => EditTask(),
+        LoginScreen.routeName : (context) => LoginScreen(),
+        RegisterScreen.routeName : (context) => RegisterScreen(),
       },
     );
   }
