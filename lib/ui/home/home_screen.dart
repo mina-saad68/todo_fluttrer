@@ -21,7 +21,7 @@ class _HomeScreenState extends State<HomeScreen> {
     return Scaffold(
       backgroundColor: Color(0xffDFECDB),
       appBar: AppBar(
-        title: index==0?Text(AppLocalizations.of(context)!.toDoList):Text(AppLocalizations.of(context)!.settings),
+        title: index==0?Text('To Do List'):Text('Settings'),
 
       ),
       bottomNavigationBar: BottomAppBar(
